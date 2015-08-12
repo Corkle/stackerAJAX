@@ -14,6 +14,7 @@ $(document).ready( function() {
         var tags = $(this).find("input[name='answerers']").val();
         getInspiration(tags);
     });
+    
 });
 
 // this function takes the question object returned by StackOverflow 
@@ -59,7 +60,7 @@ var showAnswerer = function(answerer) {
     
     // Set the Tag Score property in result
     var score = result.find('.tag-score');
-    score.text(answerer.score);
+    score.text(answerer.score);D
     
     // Set the Post Count property in result
     var postCount = result.find('.post-count');
@@ -70,7 +71,7 @@ var showAnswerer = function(answerer) {
     rep.text(answerer.user.reputation);
         
     return result;
-}
+};
 
 // this function takes the results object from StackOverflow
 // and creates info about search results to be appended to DOM
@@ -102,6 +103,7 @@ var getUnanswered = function(tags) {
 		dataType: "jsonp",
 		type: "GET",
 		})
+    
 	.done(function(result){
 		var searchResults = showSearchResults(request.tagged, result.items.length);
 
@@ -119,6 +121,7 @@ var getUnanswered = function(tags) {
 };
     
     var getInspiration = function(tag) {
+
         // the parameters we need to pass in our request to StackOverflow's API
         var url = "http://api.stackexchange.com/2.2/tags/" + tag + "/top-answerers/all_time";
         var request = {
